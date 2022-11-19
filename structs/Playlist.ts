@@ -27,7 +27,9 @@ export class Playlist {
     let playlist;
 
     if (urlValid) {
-      playlist = await youtube.getPlaylist(url);
+      playlist = await youtube.getPlaylist(url, {
+        fetchAll: true,
+      });
     } else {
       const result = await youtube.searchOne(search, "playlist");
       playlist = await youtube.getPlaylist(result.url!);
